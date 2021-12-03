@@ -20,6 +20,11 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@apollo/client": "^3.0.0",
+    "@ngrx/effects": "^12.5.1",
+    "@ngrx/entity": "^12.5.1",
+    "@ngrx/router-store": "^12.5.1",
+    "@ngrx/store": "^12.5.1",
+    "@ngrx/store-devtools": "^12.5.1",
     "apollo-angular": "^2.6.0",
     "graphql": "^15.0.0",
     "rxjs": "~6.6.0",
@@ -32,6 +37,9 @@
     "@angular/compiler-cli": "~12.2.0",
     "@graphql-codegen/cli": "2.3.0",
     "@graphql-codegen/typescript": "2.4.1",
+    "@graphql-codegen/typescript-apollo-angular": "3.3.1",
+    "@graphql-codegen/typescript-operations": "2.2.1",
+    "@ngrx/schematics": "^12.5.1",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.8.0",
@@ -40,8 +48,6 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.3.5",
-    "@graphql-codegen/typescript-operations": "2.2.1",
-    "@graphql-codegen/typescript-apollo-angular": "3.3.1"
+    "typescript": "~4.3.5"
   }
 }
