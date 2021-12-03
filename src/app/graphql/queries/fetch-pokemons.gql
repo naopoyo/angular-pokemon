@@ -1,0 +1,7 @@
+query fetchPokemons {
+  pokemons (first: 151) {
+    id
+    number
+    name
+  }
+}
