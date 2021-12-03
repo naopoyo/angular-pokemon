@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql/graphql.module';
+import { AppStoreModule } from './store/app-store.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { GraphQLModule } from './graphql/graphql.module';
 
     AppRoutingModule,
     GraphQLModule,
+    AppStoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
