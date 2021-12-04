@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FetchPokemonsGQL, FetchPokemonsQuery } from 'src/app/graphql/generated'
+import { Component, Input, OnInit } from '@angular/core';
+
+import { Pokemon } from 'src/app/models/pokemon/pokemon.model'
 
 @Component({
   selector: 'app-pokedex-index',
@@ -8,12 +9,11 @@ import { FetchPokemonsGQL, FetchPokemonsQuery } from 'src/app/graphql/generated'
 })
 export class PokedexIndexComponent implements OnInit {
 
-  pokemons: FetchPokemonsQuery["pokemons"]
+  @Input()
+  pokemons!: Pokemon[] | null
 
-  constructor(private fetchPokemonsGQL: FetchPokemonsGQL) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.fetchPokemonsGQL.fetch().subscribe((result) => this.pokemons = result.data.pokemons)
-  }
+  ngOnInit(): void { }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PokedexFacade } from 'src/app/store/pokedex/facades';
+
 @Component({
   selector: 'app-pokedex-index-container',
   templateUrl: './pokedex-index.container.html',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokedexIndexContainer implements OnInit {
 
-  constructor() { }
+  pokemons$ = this.pokedexFacade.pokemons$
 
-  ngOnInit(): void {
+  constructor(private pokedexFacade: PokedexFacade) {
+    this.pokedexFacade.fetchPokemons({ first: 151 })
   }
+
+  ngOnInit(): void { }
 
 }
