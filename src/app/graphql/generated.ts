@@ -109,28 +109,65 @@ export type QueryPokemonsArgs = {
   first: Scalars['Int'];
 };
 
-export type FetchPokemonsQueryVariables = Exact<{ [key: string]: never; }>;
+export type FetchPokemonsQueryVariables = Exact<{
+  first: Scalars['Int'];
+}>;
 
 
-export type FetchPokemonsQuery = { __typename?: 'Query', pokemons?: Array<{ __typename?: 'Pokemon', id: string, number?: string | null | undefined, name?: string | null | undefined } | null | undefined> | null | undefined };
+export type FetchPokemonsQuery = { __typename?: 'Query', pokemons?: Array<{ __typename?: 'Pokemon', id: string, number?: string | null | undefined, name?: string | null | undefined, classification?: string | null | undefined, types?: Array<string | null | undefined> | null | undefined, resistant?: Array<string | null | undefined> | null | undefined, weaknesses?: Array<string | null | undefined> | null | undefined, fleeRate?: number | null | undefined, maxCP?: number | null | undefined, maxHP?: number | null | undefined, image?: string | null | undefined, weight?: { __typename?: 'PokemonDimension', minimum?: string | null | undefined, maximum?: string | null | undefined } | null | undefined, height?: { __typename?: 'PokemonDimension', minimum?: string | null | undefined, maximum?: string | null | undefined } | null | undefined, attacks?: { __typename?: 'PokemonAttack', fast?: Array<{ __typename?: 'Attack', name?: string | null | undefined, type?: string | null | undefined, damage?: number | null | undefined } | null | undefined> | null | undefined, special?: Array<{ __typename?: 'Attack', name?: string | null | undefined, type?: string | null | undefined, damage?: number | null | undefined } | null | undefined> | null | undefined } | null | undefined, evolutions?: Array<{ __typename?: 'Pokemon', id: string } | null | undefined> | null | undefined, evolutionRequirements?: { __typename?: 'PokemonEvolutionRequirement', amount?: number | null | undefined, name?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
 
 export const FetchPokemonsDocument = gql`
-    query fetchPokemons {
-  pokemons(first: 151) {
+    query fetchPokemons($first: Int!) {
+  pokemons(first: $first) {
     id
     number
     name
+    weight {
+      minimum
+      maximum
+    }
+    height {
+      minimum
+      maximum
+    }
+    classification
+    types
+    resistant
+    attacks {
+      fast {
+        name
+        type
+        damage
+      }
+      special {
+        name
+        type
+        damage
+      }
+    }
+    weaknesses
+    fleeRate
+    maxCP
+    evolutions {
+      id
+    }
+    evolutionRequirements {
+      amount
+      name
+    }
+    maxHP
+    image
   }
 }
     `;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class FetchPokemonsGQL extends Apollo.Query<FetchPokemonsQuery, FetchPokemonsQueryVariables> {
-    document = FetchPokemonsDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
+@Injectable({
+  providedIn: 'root'
+})
+export class FetchPokemonsGQL extends Apollo.Query<FetchPokemonsQuery, FetchPokemonsQueryVariables> {
+  document = FetchPokemonsDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
   }
+}

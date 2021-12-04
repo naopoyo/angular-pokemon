@@ -1,7 +1,42 @@
-query fetchPokemons {
-  pokemons (first: 151) {
+query fetchPokemons ($first: Int!) {
+  pokemons (first: $first) {
     id
     number
     name
+    weight {
+      minimum
+      maximum
+    }
+    height {
+      minimum
+      maximum
+    }
+    classification
+    types
+    resistant
+    attacks {
+      fast {
+        name
+        type
+        damage
+      }
+      special {
+        name
+        type
+        damage
+      }
+    }
+    weaknesses
+    fleeRate
+    maxCP
+    evolutions {
+      id
+    }
+    evolutionRequirements {
+      amount
+      name
+    }
+    maxHP
+    image
   }
 }
